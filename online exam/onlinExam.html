@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<title></title>
+	<style>
+		body{background-image: url(img/OIP.jpg);
+			background-repeat: no-repeat;
+			background-size:100% 800px;}
+			table,td{width:1000px;
+				font-size: 20px;}
+	</style>
+	<script type="text/javascript">
+window.onload = function() {
+               $("#qua1,#qua2,#qua3,#qua4,#qua5,#tablebage").hide();
+				$("#start").show(); //run js code here
+           }
+
+		$("document").ready(function(){
+
+var c = 10;
+var q=0;
+var t;
+var timer_is_on = 0; 
+
+function timedCount() {
+  document.getElementById("time").value = c;
+  c = c - 1;
+  if(c>=0){
+  t = setTimeout(timedCount, 1000);
+}
+else{
+c=10;
+q++;
+clearTimeout(t);
+timer_is_on = 0;
+if (q==1) myfun1();
+	if(q==2){myfun2();}
+	if(q==3){ myfun3();}
+	if(q==4) {myfun4();}
+	if(q==5) {myfun5();}
+
+}
+}
+function startCount() {
+	c=10;
+  if (!timer_is_on) {
+    timer_is_on = 1;
+    timedCount();
+  }
+} 
+
+
+
+var count=0;
+			$("#letsgo").click(function(){
+				var name=document.getElementById("name").value;
+				document.getElementById("myname").innerHTML=name;
+$("#start,#qua2,#qua3,#qua4,#qua5,#tablebage").hide();
+				$("#qua1").show();
+				startCount();
+			})
+
+$("#next1").click(function(){
+q++;
+	myfun1();
+
+})
+	function myfun1(){
+	$("#start,#qua1,#qua3,#qua4,#qua5,#tablebage").hide();
+				$("#qua2").show();
+				
+  startCount();
+}
+
+
+$("#next2").click(function(){
+	q++;
+	myfun2();
+})
+function myfun2(){
+	$("#start,#qua1,#qua2,#qua4,#qua5,#tablebage").hide();
+				$("#qua3").show();
+				
+
+			startCount();}
+
+
+$("#next3").click(function(){
+	q++;
+	myfun3();
+})
+	function myfun3(){
+	$("#start,#qua1,#qua3,#qua2,#qua5,#tablebage").hide();
+				$("#qua4").show();
+			
+	
+				startCount();}
+			
+
+$("#next4").click(function(){
+q++;
+	myfun4(); })
+	function myfun4(){
+	$("#start,#qua1,#qua3,#qua4,#qua2,#tablebage").hide();
+				$("#qua5").show();
+				
+				startCount();
+			}
+
+$("#finish").click(function(){myfun5();})
+	function myfun5(){
+	$("#start,#qua1,#qua3,#qua4,#qua5,#qua2").hide();
+				$("#tablebage").show();
+				timer_is_on = 0;
+			}
+
+
+
+
+$(".a1").click(function(){
+		//var a=document.getElementById(this).value;
+		var type=$(this).val();
+		
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("ans1",type);
+  // Retrieve
+  document.getElementById("q1").innerHTML = localStorage.getItem("ans1");}
+
+  if( document.getElementById("w1").innerHTML==localStorage.getItem("ans1")){
+	$("#q1").css("color","green");
+	count++;
+}
+else {$("#q1").css("color","red")}
+
+})
+$(".a2").click(function(){
+		//var a=document.getElementById(this).value;
+		var type=$(this).val();
+		
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("ans2",type);
+  // Retrieve
+  document.getElementById("q2").innerHTML = localStorage.getItem("ans2");}
+
+   if( document.getElementById("w2").innerHTML==localStorage.getItem("ans2")){
+	$("#q2").css("color","green");
+	count++;
+}
+else {$("#q2").css("color","red")}
+
+})
+$(".a3").click(function(){
+		//var a=document.getElementById(this).value;
+		var type=$(this).val();
+		
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("ans3",type);
+  // Retrieve
+  document.getElementById("q3").innerHTML = localStorage.getItem("ans3");}
+
+   if( document.getElementById("w3").innerHTML==localStorage.getItem("ans3")){
+	$("#q3").css("color","green");
+	count++;
+}
+else {$("#q3").css("color","red")}
+
+})
+$(".a4").click(function(){
+		//var a=document.getElementById(this).value;
+		var type=$(this).val();
+		
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("ans4",type);
+  // Retrieve
+  document.getElementById("q4").innerHTML = localStorage.getItem("ans4");}
+
+   if( document.getElementById("w4").innerHTML==localStorage.getItem("ans4")){
+	$("#q4").css("color","green");
+	count++;
+}
+else {$("#q4").css("color","red")}
+
+})
+$(".a5").click(function(){
+		//var a=document.getElementById(this).value;
+		var type=$(this).val();
+		
+if (typeof(Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("ans5",type);
+  // Retrieve
+  document.getElementById("q5").innerHTML = localStorage.getItem("ans5");}
+
+   if( document.getElementById("w5").innerHTML==localStorage.getItem("ans5")){
+	$("#q5").css("color","green");
+	count++;
+}
+else {$("#q5").css("color","red")}
+
+})
+
+$("#result").click(function(){
+	var z=count*2;
+	$("#result").html(z+"/10");
+})
+})
+
+	</script>
+</head>
+<body >
+	
+
+	<div id="start">
+	<center>
+<h1 style="margin-top: 300px; color:#006400;">HELLO </h1>
+<h3 style="color:#466719;"> inter your name</h3 >
+<input type="text" value="name" id="name">
+<br>
+<br>
+<button id="letsgo">START EXAM</button>
+</center>
+</div>
+
+
+
+<input id="time" type="text" value="time">
+<div id="qua1" style="margin-top: 300px;">
+	
+	<h1>How do I get to Jordan?</h1>
+	<input type="radio" class="a1" name="getto"  value="Queen Alia International Airport" >Queen Alia International Airport<br>
+	<input type="radio" class="a1" name="getto" value="King Hussein International Airport">King Hussein International Airport<br>
+	<input type="radio" class="a1"name="getto"  value="all is correct">all is correct<br>
+	<button id="next1">next</button>
+
+</div>
+
+<div id="qua2">
+	
+	<h1>when is the  best time to visit Jordan</h1>
+	<input type="radio" class="a2" name="tovisit"  value="spring and autumn">spring and autumn<br>
+	<input type="radio" class="a2"  name="tovisit" value="summer">summer<br>
+	<input type="radio"  class="a2" name="tovisit"  value="winter">winter<br>
+	<button id="next2">next</button>
+
+</div>
+<div id="qua3">
+	
+	<h1>When is the weekend in Jordan?</h1>
+	<input type="radio"class="a3"  name="weekend"  value="Sunday">Sunday<br>
+	<input type="radio"class="a3"  name="weekend" value="Friday and Saturday">Friday and Saturday<br>
+	<input type="radio"class="a3" name="weekend"  value="Thursday">Thursday<br>
+	<button id="next3">next</button>
+
+</div>
+<div id="qua4">
+	
+	<h1>What are the emergency numbers in Jordan?</h1>
+	<input type="radio"class="a4" id="answer4" name="emergency"  value="191 for the police">191 for the police<br>
+	<input type="radio"class="a4" id="answer4" name="emergency" value="150 for the police">150 for the police<br>
+	<input type="radio"class="a4" id="answer4"name="emergency"  value="122 for the police">122 for the police<br>
+	<button id="next4">next</button>
+
+</div>
+<div id="qua5">
+	
+	<h1> What is the main religion in Jordan?</h1>
+	<input type="radio"class="a5" id="answer5" name="religion"  value="92% Muslims">92% Muslims<br>
+	<input type="radio"class="a5" id="answer5" name="religion" value="92% Christians">92% Christians<br>
+	<input type="radio"class="a5" id="answer5"name="religion"  value="92% Jewish">92% Jewish<br>
+		<button id="finish">finish</button>
+
+
+</div>
+
+
+<div id="tablebage">
+	<center>
+<table>
+	<tr>
+		<td colspan="3" id="myname" style="color:red;"></td>
+	</tr>
+	<tr style="color:blue;">
+		<td>the quastion</td>
+		<td>true answer</td>
+		<td>your answer</td>
+
+	</tr>
+	<tr>
+		<td>How do I get to Jordan?</td>
+		<td id="w1">all is correct</td>
+		<td id="q1"></td>
+	</tr>
+	<tr>
+		<td>when is the  best time to visit Jordan</td>
+		<td id="w2">spring and autumn</td>
+		<td id="q2"></td>
+	</tr>
+	<tr>
+		<td>When is the weekend in Jordan?</td>
+		<td id="w3">Friday and Saturday</td>
+		<td id="q3"></td>
+	</tr>
+	<tr>
+		<td>What are the emergency numbers in Jordan?</td>
+		<td id="w4">191 for the police</td>
+		<td id="q4"></td>
+	</tr>
+	<tr>
+		<td>What is the main religion in Jordan?</td>
+		<td id="w5">92% Muslims</td>
+		<td id="q5"></td>
+	</tr>
+</table>
+
+<button id ="result">the resalt is </button>
+</center>
+</div>
+</body>
+</html>
